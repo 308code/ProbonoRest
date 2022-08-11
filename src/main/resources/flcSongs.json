@@ -1,0 +1,332 @@
+[
+  {
+    "_id": {
+      "$oid": "62391dd1ace85f24167de408"
+    },
+    "title": "Raise A Hallelujh",
+    "artist": "Bethel Music & Jonathan David Helser & Melissa Helser",
+    "played": [
+      {
+        "series": "PC,|,C,C,PC,||,V1,V2",
+        "notes": "This is a note for Raise a Hallelujah!",
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1647835200000"
+          }
+        }
+      }
+    ],
+    "aka": [
+      "Hallelujah"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6239234eace85f24167de40c"
+    },
+    "title": "Oceans (Where Feet May Fail)",
+    "artist": "Hillson United",
+    "played": [
+      {
+        "series": "PC,|,C,C,PC,||,V1,V2",
+        "notes": "This is a note for Oceans!",
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1647835200000"
+          }
+        }
+      },
+      {
+        "series": "PC,|,PC,C,C,C,V1,V2,PC",
+        "notes": "Note two for song Oceans",
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1648267200000"
+          }
+        }
+      }
+    ],
+    "aka": [
+      "Hillsong United"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "623f2a603c2913828d935d3f"
+    },
+    "title": "My God Is An Awesome God",
+    "artist": "Unknown",
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1647662400000"
+          }
+        },
+        "series": "PC,|,PC,C,C,V1,V2,PC",
+        "notes": "Note one for song Oceans"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1648267200000"
+          }
+        },
+        "series": "PC,|,PC,C,C,V1,V2,PC",
+        "notes": "Note two for song Oceans"
+      }
+    ],
+    "aka": [
+      "My God",
+      "My God Is Awesome"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "625a2eb8ee7e375cf33c2454"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a3071ee7e375cf33c2455"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a30feee7e375cf33c2456"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a3197ee7e375cf33c2458"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a328fee7e375cf33c2459"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a32aeee7e375cf33c245a"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625a3574ee7e375cf33c245c"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  },
+  {
+    "_id": {
+      "$oid": "625b6bbe225de173c2a06bef"
+    },
+    "title": "Created (this entry also!) My God is a awesome God",
+    "artist": "Open Heaven",
+    "aka": [
+      "Awesome God"
+    ],
+    "played": [
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1653609600000"
+          }
+        },
+        "notes": "This is the notes section",
+        "series": "PC1,PC2,C1,C2,C3,|,V1,PC3,V2,|,PC1"
+      },
+      {
+        "datePlayed": {
+          "$date": {
+            "$numberLong": "1656288000000"
+          }
+        },
+        "notes": "This is the notes section2",
+        "series": "PC1,PC2,C1,C2,C3,PC1,||,PC3,|,V1,PC3,V2"
+      }
+    ],
+    "_class": "com.continuingdevelopment.probonorest.web.model.SongDto"
+  }
+]

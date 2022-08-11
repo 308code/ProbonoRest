@@ -1,0 +1,678 @@
+[
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d8",
+    "apiNumber": "34083234160000",
+    "permitNumber": "23416",
+    "wellName": "Bear Albert",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 180,
+        "payedDate": "2022-03-04"
+      },
+      {
+        "type": "gas",
+        "quantity": 0,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 80,
+        "payedDate" : "2022-02-23"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d7",
+    "apiNumber": "34031272590000",
+    "permitNumber": "27259",
+    "wellName": "Tiverton Timber",
+    "wellNumber": "4",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 150,
+        "payedDate": "2022-01-04"
+      },
+      {
+        "type": "gas",
+        "quantity": 0,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 50,
+        "payedDate" : "2022-03-23"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d6",
+    "apiNumber": "34031270690000",
+    "permitNumber": "27069",
+    "wellName": "Kocian",
+    "wellNumber": "1",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 100,
+        "payedDate": "2020-03-04"
+      },
+      {
+        "type": "gas",
+        "quantity": 110,
+        "payedDate": "2022-02-03"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 160,
+        "payedDate" : "2022-02-15"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d5",
+    "apiNumber": "34031270690000",
+    "permitNumber": "27069",
+    "wellName": "Tiverton Timber",
+    "wellNumber": "3",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 100,
+        "payedDate": "2022-03-04"
+      },
+      {
+        "type": "gas",
+        "quantity": 40,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 80,
+        "payedDate" : "2022-02-23"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d4",
+    "apiNumber": "34031218260000",
+    "permitNumber": "21826",
+    "wellName": "Hidden Ranch Ltd",
+    "wellNumber": "1",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 80,
+        "payedDate": "2021-03-028"
+      },
+      {
+        "type": "gas",
+        "quantity": 100,
+        "payedDate": "2022-04-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 80,
+        "payedDate" : "2021-02-23"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d3",
+    "apiNumber": "34031209450000",
+    "permitNumber": "20945",
+    "wellName": "Day CE",
+    "wellNumber": "1",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 180,
+        "payedDate": "2022-03-04"
+      },
+      {
+        "type": "gas",
+        "quantity": 0,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 80,
+        "payedDate" : "2022-02-23"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d2",
+    "apiNumber": "34083234960000",
+    "permitNumber": "23496",
+    "wellName": "Baer",
+    "wellNumber": "4",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 80,
+        "payedDate": "2022-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 20,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 110,
+        "payedDate" : "2022-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d1",
+    "apiNumber": "34083234950000",
+    "permitNumber": "23495",
+    "wellName": "Baer",
+    "wellNumber": "3",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 80,
+        "payedDate": "2022-02-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 20,
+        "payedDate": "2022-03-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 110,
+        "payedDate" : "2022-04-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689d0",
+    "apiNumber": "34083229770000",
+    "permitNumber": "22977",
+    "wellName": "Berwell Energy",
+    "wellNumber": "2",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 80,
+        "payedDate": "2022-03-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 20,
+        "payedDate": "2022-04-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 110,
+        "payedDate" : "2022-04-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c9",
+    "apiNumber": "34083229760000",
+    "permitNumber": "22976",
+    "wellName": "Berwell Energy",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c8",
+    "apiNumber": "34083217140000",
+    "permitNumber": "21714",
+    "wellName": "Powell C&J",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 140,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 100,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 110,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c7",
+    "apiNumber": "34083202090000",
+    "permitNumber": "20209",
+    "wellName": "Mizer WM",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 55,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 300,
+        "payedDate": "2021-12-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 100,
+        "payedDate" : "2021-12-08"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c6",
+    "apiNumber": "34075612330000",
+    "permitNumber": "61233",
+    "wellName": "Rogers David & Grace",
+    "wellNumber": "1",
+    "county": "Holmes",
+    "township": "Richland",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c5",
+    "apiNumber": "34031266810000",
+    "permitNumber": "26681",
+    "wellName": "Tiverton Timber",
+    "wellNumber": "2",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c4",
+    "apiNumber": "34031261360000",
+    "permitNumber": "26136",
+    "wellName": "Lemmons Otis & Dorothy",
+    "wellNumber": "1",
+    "county": "Coshocton",
+    "township": "Tiverton",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c3",
+    "apiNumber": "34117242390000",
+    "permitNumber": "24329",
+    "wellName": "Hawk",
+    "wellNumber": "2",
+    "county": "Morrow",
+    "township": "Gilead",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c3",
+    "apiNumber": "34117241730000",
+    "permitNumber": "24173",
+    "wellName": "Earl & Sherrill Vanhorn",
+    "wellNumber": "3",
+    "county": "Morrow",
+    "township": "Congress",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c2",
+    "apiNumber": "34117241640000",
+    "permitNumber": "24164",
+    "wellName": "Vanhorn Earl & Sherrill",
+    "wellNumber": "2",
+    "county": "Morrow",
+    "township": "Congress",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c1",
+    "apiNumber": "34117241490000",
+    "permitNumber": "24149",
+    "wellName": "Vanhorn Earl & Sherrill",
+    "wellNumber": "1",
+    "county": "Morrow",
+    "township": "Congress",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689c0",
+    "apiNumber": "34117236650000",
+    "permitNumber": "23665",
+    "wellName": "Van Horn Karl & Sherrill",
+    "wellNumber": "2",
+    "county": "Morrow",
+    "township": "Congress",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b9",
+    "apiNumber": "34083236390000",
+    "permitNumber": "23639",
+    "wellName": "Sapp Robert & Helen / Bear Albert",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b8",
+    "apiNumber": "34083235590000",
+    "permitNumber": "23559",
+    "wellName": "Howard Banbury",
+    "wellNumber": "2",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b7",
+    "apiNumber": "34083225820000",
+    "permitNumber": "22582",
+    "wellName": "Stachler William & Beverly",
+    "wellNumber": "2",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b6",
+    "apiNumber": "34083225200000",
+    "permitNumber": "22520",
+    "wellName": "Stachler William & Beverly",
+    "wellNumber": "1",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b5",
+    "apiNumber": "34083224550000",
+    "permitNumber": "22455",
+    "wellName": "Sheldon John & Mary",
+    "wellNumber": "2",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  },
+  {
+    "_id": "368404e3-8dc0-4e8a-a024-c669c8d689b4",
+    "apiNumber": "34083222580000",
+    "permitNumber": "22258",
+    "wellName": "Lower Cleophas",
+    "wellNumber": "2",
+    "county": "Knox",
+    "township": "Union",
+    "production": [
+      {
+        "type": "oil",
+        "quantity": 40,
+        "payedDate": "2021-01-01"
+      },
+      {
+        "type": "gas",
+        "quantity": 200,
+        "payedDate": "2021-02-01"
+      },
+      {
+        "type" : "brine",
+        "quantity" : 10,
+        "payedDate" : "2021-03-01"
+      }
+    ]
+  }
+]
