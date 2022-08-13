@@ -39,6 +39,11 @@ public class WellController {
         return wellService.getAllWells();
     }
 
+    @GetMapping(value="/recent-production" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Well>> getAllWellsByProduction(){
+        return wellService.getAllWellsOrderedByMostRecentProduction();
+    }
+
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Well> getWellById(@PathVariable("id") String id){
         return wellService.getWellById(id);

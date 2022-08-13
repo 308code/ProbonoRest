@@ -12,6 +12,8 @@ public interface WellService {
     ResponseEntity<Boolean> deleteWellById(String id);
 
     ResponseEntity<List<Well>> getAllWells();
+    ResponseEntity<List<Well>> getAllWellsOrderedByMostRecentProduction();
 
-    ResponseEntity<Well> getWellById(String id);
+
+        ResponseEntity<Well> getWellById(String id);
 }
