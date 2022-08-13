@@ -6,6 +6,7 @@ import com.continuing.development.probonorest.model.Well;
 import com.mongodb.MongoException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,24 @@ public class WellServiceMongoDbImpl implements WellService{
             return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
         }
     }
+
+    public ResponseEntity<List<Well>> getAllWellsOrderedByMostRecentProduction(){
+        List<Well> wells;
+        try{
+            wells = wellDao.findAll();
+        }catch (MongoException e){
+            log.error("Error getting all wells:  MESSAGE: {}  STACKTRACE:  {}", e.getMessage(), e.getStackTrace());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        if(! CollectionUtils.isEmpty(wells)){
+            wells.sort(wellComparator.reversed());
+        }
+
+        HttpHeaders headers = addCountToHeader(wells);
+        return getListResponseEntity(wells,headers);
+    }
+
 
     @Override
     public ResponseEntity<List<Well>> getAllWells() {
