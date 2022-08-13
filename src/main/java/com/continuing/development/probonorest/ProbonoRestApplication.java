@@ -22,7 +22,7 @@ public class ProbonoRestApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry
 						.addMapping(PATH_PATTERN)
-						.allowedMethods("POST", "GET", "PUT", "DELETE")
+						.allowedMethods("POST", "GET", "PUT", "DELETE","HEAD","OPTIONS","PATCH")
 						.allowedOrigins(ALLOWED_ORIGIN)
 						.maxAge(0);
 			}

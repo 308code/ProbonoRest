@@ -28,7 +28,7 @@ public class WellController {
         this.wellService = wellService;
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> createWell(@RequestBody Well well){return wellService.createWell(well);}
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
