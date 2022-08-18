@@ -1,9 +1,11 @@
 package com.continuing.development.probonorest.controller;
 
 import com.continuing.development.probonorest.model.Well;
+import com.continuing.development.probonorest.model.WellReport;
 import com.continuing.development.probonorest.service.WellService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -52,5 +55,12 @@ public class WellController {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> deleteWellById(@PathVariable("id") String id){
         return wellService.deleteWellById(id);
+    }
+
+    @GetMapping(value="/reports/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<WellReport>> getProductionTotalsWithinRange(
+            @PathVariable("from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
+            @PathVariable("to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to){
+        return wellService.generateProductionReportWithinDateRange(from,to);
     }
 }

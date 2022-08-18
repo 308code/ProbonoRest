@@ -3,10 +3,10 @@ package com.continuing.development.probonorest.service;
 import com.continuing.development.probonorest.comparator.WellComparatorByLastProducedDate;
 import com.continuing.development.probonorest.dao.WellDao;
 import com.continuing.development.probonorest.model.Well;
+import com.continuing.development.probonorest.model.WellReport;
 import com.mongodb.MongoException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -44,20 +46,19 @@ public class WellServiceMongoDbImpl implements WellService{
     }
     @Override
     public ResponseEntity<Well> updateWell(Well well){
-        System.out.println("Well = " + well.toString());
         Well responseWell = wellDao.save(well);
-        return new ResponseEntity<Well>(responseWell,HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(responseWell,HttpStatus.ACCEPTED);
     }
     @Override
     public ResponseEntity<Boolean> deleteWellById(String id) {
         try {
             if (!wellDao.existsById(id)) {
-                return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(Boolean.FALSE, HttpStatus.NOT_FOUND);
             }
             wellDao.deleteById(id);
-            return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+            return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
         } catch (MongoException e) {
-            return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -77,6 +78,30 @@ public class WellServiceMongoDbImpl implements WellService{
         HttpHeaders headers = addCountToHeader(wells);
         return getListResponseEntity(wells,headers);
     }
+
+    @Override
+    public ResponseEntity<List<WellReport>> generateProductionReportWithinDateRange(Date from, Date to) {
+        List<WellReport> results = new ArrayList<>();
+        List<Well> wells = wellDao.findAllByProductionPayedDateBetweenOrderByCountyAscTownshipAscWellNameAscWellNumberAsc(from, to);
+        wells.forEach( well -> well.getProduction().forEach(production -> {
+            if(production.getPayedDate().after(from) && production.getPayedDate().before(to)){
+                WellReport wellReport = new WellReport(well,production.getProdQtyByType("oil"),
+                        production.getProdQtyByType("gas"),production.getProdQtyByType("brine"));
+                int i = results.indexOf(wellReport);
+
+                if(i == -1){
+                    results.add(wellReport);
+                }else {
+                    results.get(i).setOilTotal(results.get(i).getOilTotal() + wellReport.getOilTotal());
+                    results.get(i).setGasTotal(results.get(i).getGasTotal() + wellReport.getGasTotal());
+                    results.get(i).setBrineTotal(results.get(i).getBrineTotal() + wellReport.getBrineTotal());
+                }
+            }
+        }));
+        return new ResponseEntity<>(results,HttpStatus.OK);
+    }
+
+
 
 
     @Override
@@ -99,7 +124,8 @@ public class WellServiceMongoDbImpl implements WellService{
     public ResponseEntity<Well> getWellById(String id)  {
         Well well;
         try{
-            well = wellDao.findWellById(id);
+            Optional<Well> optional = wellDao.findById(id);
+            well = optional.orElse(null);
         }catch (MongoException e){
             log.error("Error getting well with id: {} MESSAGE: {}  STACKTRACE: {}", id, e.getMessage(), e.getStackTrace());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -138,6 +164,5 @@ public class WellServiceMongoDbImpl implements WellService{
         }
         return new ResponseEntity<>(wells, headers, HttpStatus.OK);
     }
-
 
 }

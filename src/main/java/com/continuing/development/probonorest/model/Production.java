@@ -17,4 +17,11 @@ public class Production {
     private double quantity;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date payedDate;
+
+    public double getProdQtyByType(String type){
+        if(this.getType().equalsIgnoreCase(type)){
+            return this.getQuantity();
+        }
+        return 0;
+    }
 }
