@@ -83,23 +83,21 @@ public class WellServiceMongoDbImpl implements WellService{
     public ResponseEntity<List<WellReport>> generateProductionReportWithinDateRange(Date from, Date to) {
         List<WellReport> results = new ArrayList<>();
         List<Well> wells = wellDao.findAllByProductionPayedDateBetweenOrderByCountyAscTownshipAscWellNameAscWellNumberAsc(from, to);
-        wells.forEach( well -> {
-            well.getProduction().forEach( production -> {
-                if(production.getPayedDate().after(from) && production.getPayedDate().before(to)){
-                    WellReport wellReport = new WellReport(well,production.getProdQtyByType("oil"),
-                            production.getProdQtyByType("gas"),production.getProdQtyByType("brine"));
-                    int i = results.indexOf(wellReport);
+        wells.forEach( well -> well.getProduction().forEach(production -> {
+            if(production.getPayedDate().after(from) && production.getPayedDate().before(to)){
+                WellReport wellReport = new WellReport(well,production.getProdQtyByType("oil"),
+                        production.getProdQtyByType("gas"),production.getProdQtyByType("brine"));
+                int i = results.indexOf(wellReport);
 
-                    if(i == -1){
-                        results.add(wellReport);
-                    }else {
-                        results.get(i).setOilTotal(results.get(i).getOilTotal() + wellReport.getOilTotal());
-                        results.get(i).setGasTotal(results.get(i).getGasTotal() + wellReport.getGasTotal());
-                        results.get(i).setBrineTotal(results.get(i).getBrineTotal() + wellReport.getBrineTotal());
-                    }
+                if(i == -1){
+                    results.add(wellReport);
+                }else {
+                    results.get(i).setOilTotal(results.get(i).getOilTotal() + wellReport.getOilTotal());
+                    results.get(i).setGasTotal(results.get(i).getGasTotal() + wellReport.getGasTotal());
+                    results.get(i).setBrineTotal(results.get(i).getBrineTotal() + wellReport.getBrineTotal());
                 }
-            });
-        });
+            }
+        }));
         return new ResponseEntity<>(results,HttpStatus.OK);
     }
 
