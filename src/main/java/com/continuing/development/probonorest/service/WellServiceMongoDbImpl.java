@@ -1,7 +1,9 @@
 package com.continuing.development.probonorest.service;
 
+import com.continuing.development.probonorest.comparator.ProductionComparatorByDate;
 import com.continuing.development.probonorest.comparator.WellComparatorByLastProducedDate;
 import com.continuing.development.probonorest.dao.WellDao;
+import com.continuing.development.probonorest.model.Production;
 import com.continuing.development.probonorest.model.Well;
 import com.continuing.development.probonorest.model.WellReport;
 import com.mongodb.MongoException;
@@ -27,6 +29,7 @@ import java.util.UUID;
 public class WellServiceMongoDbImpl implements WellService{
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
     private final WellComparatorByLastProducedDate wellComparator = new WellComparatorByLastProducedDate();
+    private final ProductionComparatorByDate productionComparatorByDate = new ProductionComparatorByDate();
     private final WellDao wellDao;
 
     @Autowired
@@ -101,9 +104,6 @@ public class WellServiceMongoDbImpl implements WellService{
         return new ResponseEntity<>(results,HttpStatus.OK);
     }
 
-
-
-
     @Override
     public ResponseEntity<List<Well>> getAllWells() {
         List<Well> wells;
@@ -113,9 +113,7 @@ public class WellServiceMongoDbImpl implements WellService{
             log.error("Error getting all wells:  MESSAGE: {}  STACKTRACE:  {}", e.getMessage(), e.getStackTrace());
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-//        if(! CollectionUtils.isEmpty(wells)){
-//            wells.sort(wellComparator);
-//        }
+
         HttpHeaders headers = addCountToHeader(wells);
         return getListResponseEntity(wells,headers);
     }
@@ -123,13 +121,25 @@ public class WellServiceMongoDbImpl implements WellService{
     @Override
     public ResponseEntity<Well> getWellById(String id)  {
         Well well;
+        List<Production> tempProdList = null;
         try{
             Optional<Well> optional = wellDao.findById(id);
             well = optional.orElse(null);
+            if(!ObjectUtils.isEmpty(well)){
+                tempProdList = well.getProduction();
+            }
         }catch (MongoException e){
             log.error("Error getting well with id: {} MESSAGE: {}  STACKTRACE: {}", id, e.getMessage(), e.getStackTrace());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        if((!CollectionUtils.isEmpty(tempProdList)) && (tempProdList.size() > 1)){
+            tempProdList.sort(this.productionComparatorByDate.reversed());
+        }
+
+        if(!ObjectUtils.isEmpty(well)) {
+            well.setProduction(tempProdList);
+        }
+
         HttpHeaders headers = addCountToHeader(well);
         if(ObjectUtils.isEmpty(well)){
             return new ResponseEntity<>(headers,HttpStatus.NO_CONTENT);
