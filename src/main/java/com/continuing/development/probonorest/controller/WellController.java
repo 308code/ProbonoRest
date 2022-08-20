@@ -1,5 +1,6 @@
 package com.continuing.development.probonorest.controller;
 
+import com.continuing.development.probonorest.aspect.LogMethod;
 import com.continuing.development.probonorest.model.Well;
 import com.continuing.development.probonorest.model.WellReport;
 import com.continuing.development.probonorest.service.WellService;
@@ -24,39 +25,40 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/wells")
 public class WellController {
+    @Autowired
     private final WellService wellService;
 
-    @Autowired
     public WellController(WellService wellService){
         this.wellService = wellService;
     }
 
+    @LogMethod(level="INFO")
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> createWell(@RequestBody Well well){return wellService.createWell(well);}
-
+    @LogMethod(level="INFO")
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Well> updateWell(@RequestBody Well well){return wellService.updateWell(well);}
-
+    @LogMethod(level="INFO")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Well>> getAllWells(){
         return wellService.getAllWells();
     }
-
+    @LogMethod(level="INFO")
     @GetMapping(value="/recent-production" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Well>> getAllWellsByProduction(){
         return wellService.getAllWellsOrderedByMostRecentProduction();
     }
-
+    @LogMethod(level="INFO")
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Well> getWellById(@PathVariable("id") String id){
         return wellService.getWellById(id);
     }
-
+    @LogMethod(level="INFO")
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Boolean> deleteWellById(@PathVariable("id") String id){
         return wellService.deleteWellById(id);
     }
-
+    @LogMethod(level="INFO")
     @GetMapping(value="/reports/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<WellReport>> getProductionTotalsWithinRange(
             @PathVariable("from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
