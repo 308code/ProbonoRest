@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.Date;
 
@@ -19,7 +20,9 @@ public class Production {
     private Date payedDate;
 
     public double getProdQtyByType(String type){
-        if(this.getType().equalsIgnoreCase(type)){
+        if(ObjectUtils.isNotEmpty(this) &&
+                ObjectUtils.isNotEmpty(this.getType()) &&
+                this.getType().equalsIgnoreCase(type)){
             return this.getQuantity();
         }
         return 0;
