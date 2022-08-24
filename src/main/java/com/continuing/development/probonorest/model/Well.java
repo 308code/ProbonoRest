@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
-public class Well {
+public class Well{
     @EqualsAndHashCode.Include
     @Id
     private String id;
@@ -31,4 +31,5 @@ public class Well {
     @Field("township")
     private String townshipName;
     private List<Production> production;
+
 }

@@ -36,9 +36,6 @@ public class WellController {
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> createWell(@RequestBody Well well){return wellService.createWell(well);}
     @LogMethod(level="INFO")
-    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Well> updateWell(@RequestBody Well well){return wellService.updateWell(well);}
-    @LogMethod(level="INFO")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Well>> getAllWells(){
         return wellService.getAllWells();
@@ -54,15 +51,20 @@ public class WellController {
         return wellService.getWellById(id);
     }
     @LogMethod(level="INFO")
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> deleteWellById(@PathVariable("id") String id){
-        return wellService.deleteWellById(id);
-    }
-    @LogMethod(level="INFO")
     @GetMapping(value="/reports/{from}/{to}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<WellReport>> getProductionTotalsWithinRange(
             @PathVariable("from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
             @PathVariable("to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to){
         return wellService.generateProductionReportWithinDateRange(from,to);
+    }
+
+    @LogMethod(level="INFO")
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Well> updateWell(@RequestBody Well well){return wellService.updateWell(well);}
+
+    @LogMethod(level="INFO")
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> deleteWellById(@PathVariable("id") String id){
+        return wellService.deleteWellById(id);
     }
 }

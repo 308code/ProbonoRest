@@ -8,17 +8,18 @@ import com.continuing.development.probonorest.model.Well;
 import com.continuing.development.probonorest.model.WellReport;
 import com.mongodb.MongoException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,6 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class WellServiceMongoDbImpl implements WellService{
-    private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
     private final WellComparatorByLastProducedDate wellComparator = new WellComparatorByLastProducedDate();
     private final ProductionComparatorByDate productionComparatorByDate = new ProductionComparatorByDate();
     private final WellDao wellDao;
@@ -44,27 +44,22 @@ public class WellServiceMongoDbImpl implements WellService{
             Well result = wellDao.insert(well);
             return new ResponseEntity<>(result.getId(),HttpStatus.CREATED);
         }catch (MongoException e){
-            return new ResponseEntity<>("",HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>("Not Created",HttpStatus.NO_CONTENT);
         }
     }
     @Override
-    public ResponseEntity<Well> updateWell(Well well){
-        Well responseWell = wellDao.save(well);
-        return new ResponseEntity<>(responseWell,HttpStatus.ACCEPTED);
-    }
-    @Override
-    public ResponseEntity<Boolean> deleteWellById(String id) {
-        try {
-            if (!wellDao.existsById(id)) {
-                return new ResponseEntity<>(Boolean.FALSE, HttpStatus.NOT_FOUND);
-            }
-            wellDao.deleteById(id);
-            return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
-        } catch (MongoException e) {
-            return new ResponseEntity<>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<List<Well>> getAllWells() {
+        List<Well> wells;
+        try{
+            wells = wellDao.findAllByOrderByCountyNameAscTownshipNameAscWellNameAscWellNumberAsc();
+        }catch (MongoException e){
+            log.error("Error getting all wells:  MESSAGE: {}  STACKTRACE:  {}", e.getMessage(), e.getStackTrace());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-    }
 
+        HttpHeaders headers = addCountToHeader(wells);
+        return getListResponseEntity(wells,headers);
+    }
     public ResponseEntity<List<Well>> getAllWellsOrderedByMostRecentProduction(){
         List<Well> wells;
         try{
@@ -73,13 +68,14 @@ public class WellServiceMongoDbImpl implements WellService{
             log.error("Error getting all wells:  MESSAGE: {}  STACKTRACE:  {}", e.getMessage(), e.getStackTrace());
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-
-        if(! CollectionUtils.isEmpty(wells)){
-            wells.sort(wellComparator.reversed());
+        List<Well> modifiableList = (CollectionUtils.isEmpty(wells) ? new ArrayList<>() : new ArrayList<>(wells));
+        if(! CollectionUtils.isEmpty(modifiableList)){
+            //Collections.sort(modifiableList,wellComparator.reversed());
+            modifiableList.sort(wellComparator.reversed());
         }
 
-        HttpHeaders headers = addCountToHeader(wells);
-        return getListResponseEntity(wells,headers);
+        HttpHeaders headers = addCountToHeader(modifiableList);
+        return getListResponseEntity(modifiableList,headers);
     }
 
     @Override
@@ -102,20 +98,6 @@ public class WellServiceMongoDbImpl implements WellService{
             }
         }));
         return new ResponseEntity<>(results,HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<List<Well>> getAllWells() {
-        List<Well> wells;
-        try{
-            wells = wellDao.findAllByOrderByCountyNameAscTownshipNameAscWellNameAscWellNumberAsc();
-        }catch (MongoException e){
-            log.error("Error getting all wells:  MESSAGE: {}  STACKTRACE:  {}", e.getMessage(), e.getStackTrace());
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        HttpHeaders headers = addCountToHeader(wells);
-        return getListResponseEntity(wells,headers);
     }
 
     @Override
@@ -146,6 +128,40 @@ public class WellServiceMongoDbImpl implements WellService{
         }
         return new ResponseEntity<>(well,headers,HttpStatus.OK);
     }
+
+    private ResponseEntity<List<Well>> getListResponseEntity(List<Well> wells, HttpHeaders headers) {
+        if(CollectionUtils.isEmpty(wells)){
+            return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(wells, headers, HttpStatus.OK);
+    }
+
+
+    @Override
+    public ResponseEntity<Well> updateWell(Well well){
+        try {
+            Well responseWell = wellDao.save(well);
+            return new ResponseEntity<>(responseWell, HttpStatus.ACCEPTED);
+        }catch (MongoException e){
+            return new ResponseEntity<>(well,HttpStatus.NO_CONTENT);
+        }catch (IllegalArgumentException e){
+            return new ResponseEntity<>(well,HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    public ResponseEntity<Boolean> deleteWellById(String id) {
+        try {
+            if (!wellDao.existsById(id)) {
+                return new ResponseEntity<>(Boolean.FALSE, HttpStatus.NOT_FOUND);
+            }
+            wellDao.deleteById(id);
+            return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+        } catch (MongoException e) {
+            return new ResponseEntity<>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     private HttpHeaders addCountToHeader(List<Well> wellList){
         HttpHeaders headers = new HttpHeaders();
 
@@ -155,7 +171,6 @@ public class WellServiceMongoDbImpl implements WellService{
         headers.add("count", String.valueOf(wellList.size()));
         return headers;
     }
-
     private HttpHeaders addCountToHeader(Well well){
         HttpHeaders headers = new HttpHeaders();
 
@@ -167,12 +182,4 @@ public class WellServiceMongoDbImpl implements WellService{
 
         return headers;
     }
-
-    private ResponseEntity<List<Well>> getListResponseEntity(List<Well> wells, HttpHeaders headers) {
-        if(CollectionUtils.isEmpty(wells)){
-            return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(wells, headers, HttpStatus.OK);
-    }
-
 }
