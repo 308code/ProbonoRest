@@ -48,7 +48,6 @@ public class SongController {
         this.songService = songService;
     }
 
-
     @LogMethod(level="INFO")
     @PostMapping( produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> createSong(@RequestBody Song song){
