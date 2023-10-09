@@ -5,9 +5,12 @@ import com.continuing.development.probonorest.comparator.SongComparatorByLastPla
 import com.continuing.development.probonorest.dao.SongDao;
 import com.continuing.development.probonorest.model.Played;
 import com.continuing.development.probonorest.model.Song;
+import com.continuing.development.probonorest.model.Well;
 import com.mongodb.MongoException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -31,8 +35,14 @@ public class SongServiceMongoDbImpl implements SongService{
 
 
     @Override
-    public String createSong(Song song){
-        return songDao.insert(song).getId();
+    public ResponseEntity<String> createSong(Song song){
+        try{
+            song.setId(UUID.randomUUID().toString().replace("-",""));
+            Song result = songDao.insert(song);
+            return new ResponseEntity<>(result.getId(), HttpStatus.CREATED);
+        }catch (MongoException e){
+            return new ResponseEntity<>("Not Created",HttpStatus.NO_CONTENT);
+        }
     }
 
     @Override
@@ -232,12 +242,9 @@ public class SongServiceMongoDbImpl implements SongService{
     @Override
     public boolean deleteSongById(String id){
         if(songDao.existsById(id)){
-            System.out.println("Before I'm here = " + id);
             songDao.deleteById(id);
-            System.out.println("AFter I'm here = " + id);
             return true;
         }else{
-            System.out.println("Before the else returns false = " + id);
             return false;
         }
     }

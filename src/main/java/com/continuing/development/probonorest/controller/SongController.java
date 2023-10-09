@@ -34,7 +34,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/songs")
 public class SongController {
-    private static final String URI = "http://localhost:8080/";
+    private static final String URI = "http://18.223.159.186:8080/";
+    //private static final String URI = "http://localhost:8080/";
     private static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
     private static Calendar CAL = Calendar.getInstance();
     static {
@@ -53,13 +54,13 @@ public class SongController {
     public ResponseEntity<String> createSong(@RequestBody Song song){
         String id = UUID.randomUUID().toString().replace("-","");
         song.setId(id);
-        String newSongId = songService.createSong(song);
+        ResponseEntity<String> newSongId = songService.createSong(song);
         HttpHeaders httpHeaders = addCountToHeader(song);
-        if(StringUtils.isEmpty(newSongId)){
-            return new ResponseEntity<>(httpHeaders,HttpStatus.NO_CONTENT);
+        if(StringUtils.isEmpty(newSongId.getBody())){
+            return new ResponseEntity<String>(httpHeaders,HttpStatus.NO_CONTENT);
         }
         httpHeaders.add("location",URI + "api/songs/" + newSongId);
-        return new ResponseEntity<>(newSongId, httpHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<String>(newSongId.getBody(), httpHeaders, HttpStatus.CREATED);
     }
 
     @LogMethod(level="INFO")
@@ -110,6 +111,7 @@ public class SongController {
     @GetMapping(value="{from}/{to}" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Song>> getAllSongsPlayedBetweenDates(@PathVariable("from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
                                                                     @PathVariable("to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to) {
+        from.setDate(from.getDate() +1);
         List<Song> songs = songService.getAllSongsPlayedBetweenDates(prepDate(from), prepDate(to));
         HttpHeaders httpHeaders = addCountToHeader(songs);
         if(CollectionUtils.isEmpty(songs)){
@@ -132,14 +134,11 @@ public class SongController {
     @LogMethod(level="INFO")
     @PutMapping( produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Song> putSong(@RequestBody Song song){
-        System.out.println("SONG = " + song);
         Song updatedSong = songService.updateSong(song);
-        System.out.println("UPDATED SONG = " + updatedSong);
         HttpHeaders httpHeaders = addCountToHeader(updatedSong);
         if(ObjectUtils.isEmpty(updatedSong)){
             return new ResponseEntity<>(httpHeaders,HttpStatus.NO_CONTENT);
         }
-        System.out.println("I'm here at end of update call!" + updatedSong);
         return new ResponseEntity<>(updatedSong, httpHeaders, HttpStatus.OK);
     }
 

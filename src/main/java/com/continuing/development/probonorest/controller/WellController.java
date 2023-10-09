@@ -32,7 +32,7 @@ public class WellController {
         this.wellService = wellService;
     }
 
-    @LogMethod(level="INFO")
+    @LogMethod(level="DEBUG")
     @PostMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> createWell(@RequestBody Well well){return wellService.createWell(well);}
     @LogMethod(level="INFO")

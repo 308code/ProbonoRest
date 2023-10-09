@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class ProbonoRestApplication {
 	private final static String PATH_PATTERN = "/**";
-	private final static String ALLOWED_ORIGIN = "http://localhost:4200";
+	private final static String  ALLOWED_ORIGIN = "*";
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProbonoRestApplication.class, args);
@@ -23,6 +23,7 @@ public class ProbonoRestApplication {
 				registry
 						.addMapping(PATH_PATTERN)
 						.allowedMethods("POST", "GET", "PUT", "DELETE","HEAD","OPTIONS","PATCH")
+						.allowedOriginPatterns(ALLOWED_ORIGIN)
 						.allowedOrigins(ALLOWED_ORIGIN)
 						.maxAge(0);
 			}
