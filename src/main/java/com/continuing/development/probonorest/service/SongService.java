@@ -1,12 +1,13 @@
 package com.continuing.development.probonorest.service;
 
 import com.continuing.development.probonorest.model.Song;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
 import java.util.List;
 
 public interface SongService {
-    String createSong(Song song);
+    ResponseEntity<String> createSong(Song song);
     List<Song> getAllSongs();
     List<Song> getAllSongsByPlayedDate();
     Song getSongById(String id);
